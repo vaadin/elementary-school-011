@@ -1,0 +1,22 @@
+{
+  "name": "vaadin-elementary-school-011",
+  "description": "",
+  "authors": [
+    "Teemu Pöntelin <teemu@vaadin.com>"
+  ],
+  "license": "Apache 2",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "vaadin-combo-box": "^1.0.0-alpha6",
+    "iron-form": "polymerelements/iron-form#^1.0.15"
+  }
+}

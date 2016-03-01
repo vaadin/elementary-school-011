@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Vaadin Elementary School</title>
+  <style>
+    html,
+    body {
+      font-family: 'Helvetica Neue', Helvetica, sans-serif;
+      height: 100%;
+    }
+    input[type=submit] {
+      margin: 10px 0;
+      background: #00b4f0;
+      color: #fff;
+      border: none;
+      font-size: 16px;
+      padding: 5px 10px;
+    }
+  </style>
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+
+  <link rel="import" href="bower_components/vaadin-combo-box/vaadin-combo-box.html">
+  <link rel="import" href="bower_components/iron-ajax/iron-ajax.html">
+  <link rel="import" href="bower_components/iron-form/iron-form.html">
+</head>
+
+<body>
+  <h1>Vaadin Elementary School</h1>
+
+  <template is="dom-bind" id="app">
+    <iron-ajax auto url="elements.json" last-response="{{elements}}"></iron-ajax>
+
+    <form is="iron-form" method="post">
+      <vaadin-combo-box
+        name="element"
+        item-label-path="name"
+        item-value-path="symbol"
+        items="[[elements]]"
+        label="Element">
+      </vaadin-combo-box>
+      <input type="submit" value="Submit">
+    </form>
+
+    <p id="value"><!-- Submit value appears here. --></p>
+  </template>
+
+  <script type="text/javascript">
+    window.addEventListener('dom-change', function() {
+      var form = document.querySelector('form');
+      form.addEventListener('iron-form-presubmit', function(e) {
+        document.querySelector('#value').textContent = this.serialize().element;
+        e.preventDefault();
+      });
+    });
+  </script>
+</body>
+
+</html>
